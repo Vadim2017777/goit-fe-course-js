@@ -131,7 +131,6 @@ while (input !== null) {
 
   if (isNaN(input)) {
     alert('Введите число');
-    console.log('Невалидный ввод, попробуйте еще раз!');
   } else userTotal = userTotal + Number(input);
 }
 
