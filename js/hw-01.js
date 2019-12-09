@@ -128,7 +128,11 @@ let userTotal = 0;
 
 while (input !== null) {
   input = prompt(`Введите число`);
-  userTotal = userTotal + Number(input);
+
+  if (isNaN(input)) {
+    alert('Введите число');
+    console.log('Невалидный ввод, попробуйте еще раз!');
+  } else userTotal = userTotal + Number(input);
 }
 
 alert(`Общая сумма чисел равна ${userTotal}`);
