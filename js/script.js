@@ -99,12 +99,18 @@ let input;
 const numbers = [];
 let total = 0;
 
-for (let i = 0; i < 3; i += 1) {
-  input = numbers.push(prompt());
+// for (let i = 0; i < 3; i += 1) {
+//   input = numbers.push(prompt());
 
-  console.log(numbers);
+//   console.log(numbers);
+// }
+
+for (let i = 0; i < numbers.length; i += 1) {
+  total += numbers[i];
 }
-console.log(`input ${input}  Array ${numbers}`);
+console.log(total);
+
+// numbers = console.log(`input ${input}  Array ${numbers}`);
 
 // var myArr = new Array(3);
 // for (var j = 0, J = myArr.length; j < J; j++)
