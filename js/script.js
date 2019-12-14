@@ -79,41 +79,98 @@
 
 // TASK_5;
 
-const checkForSpam = message => {
-  let spam = message.toLowerCase();
-  console.log(spam);
-  if (spam.includes('sale') || spam.includes('spam')) {
+// const checkForSpam = message => {
+//   let spam = message.toLowerCase();
+//   console.log(spam);
+//   if (spam.includes('sale') || spam.includes('spam')) {
+//     return true;
+//   }
+//   return false;
+// };
+
+// console.log(checkForSpam('Latest technology news')); // false
+// console.log(checkForSpam('JavaScript weekly newsletter')); // false
+// console.log(checkForSpam('Get best sale offers now!')); // true
+// console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
+
+// // TASK_6;
+
+// let input;
+// const numbers = [];
+// let total = 0;
+
+// const sumaryFunction = () => {
+//   do {
+//     input = prompt(`Введите число`);
+//     numbers.push(Number(input));
+//   } while (input != null);
+//   if (numbers != 0) {
+//     for (let i = 0; i < numbers.length; i += 1) {
+//       total += numbers[i];
+//     }
+//     return total;
+//   }
+//   return (total = 'Pustoi massiv');
+// };
+
+// console.log(sumaryFunction());
+
+// const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
+
+// const isLoginValid = login => {
+//   if (login.length >= 4 && login.length <= 16) {
+//     return true;
+//   }
+//   return false;
+// };
+
+// console.log(isLoginValid(login));
+
+// const isLoginUnique = (allLogins, login) => {
+//   allLogins.includes('Vadim');
+//   for (let i = 0; i < allLogins.length; i += 1) {
+//     console.log(allLogins[i]);
+//     if (allLogins[i] != login) {
+//       continue;
+//     }
+//     return false;
+//   }
+//   return true;
+// };
+
+// console.log(isLoginUnique(logins));
+
+// const isLoginUnique = (allLogins, login = 'Aj4x1sBozz') => {
+//   return allLogins.includes(login);
+// };
+
+// console.log(isLoginUnique(logins));
+
+const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
+
+const isLoginValid = login => {
+  if (login.length >= 4 && login.length <= 16) {
     return true;
   }
   return false;
 };
 
-console.log(checkForSpam('Latest technology news')); // false
-console.log(checkForSpam('JavaScript weekly newsletter')); // false
-console.log(checkForSpam('Get best sale offers now!')); // true
-console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
+const isLoginUnique = (allLogins, login) => {
+  return allLogins.includes(login);
+};
 
-// TASK_6;
+const addLogin = (allLogins, login) => {
+  if (!isLoginValid(login)) {
+    console.log('Ошибка! Логин должен быть от 4 до 16 символов');
+    return;
+  } else if (isLoginUnique(allLogins, login)) {
+    console.log('Такой логин уже используется!');
+    return;
+  } else allLogins.push(login);
+  console.log('Логин успешно добавлен!');
+};
 
-let input;
-const numbers = [];
-let total = 0;
-
-// for (let i = 0; i < 3; i += 1) {
-//   input = numbers.push(prompt());
-
-//   console.log(numbers);
-// }
-
-for (let i = 0; i < numbers.length; i += 1) {
-  total += numbers[i];
-}
-console.log(total);
-
-// numbers = console.log(`input ${input}  Array ${numbers}`);
-
-// var myArr = new Array(3);
-// for (var j = 0, J = myArr.length; j < J; j++)
-//   myArr[j] = prompt('введите значение ' + j + '-го элемента масива', '');
-
-// alert(myArr); // это для проверки
+addLogin(logins, 'Ajax'); // 'Логин успешно добавлен!'
+addLogin(logins, 'robotGoogles'); // 'Такой логин уже используется!'
+addLogin(logins, 'Zod'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
