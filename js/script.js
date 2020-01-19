@@ -1,9 +1,9 @@
 'use strict';
 // TASK - 1;
 
-const logItems = function(array) {
+const logItems = array => {
   for (let i = 0; i < array.length; i += 1) {
-    console.log(`${i + 1}  ${array[i]}`);
+    console.log(`${i + 1}-${array[i]}`);
   }
 };
 
@@ -42,11 +42,10 @@ console.log(
 
 // // TASK - 3;
 
-const findLongestWord = function(string) {
+const findLongestWord = string => {
   const words = string.split(' ');
   let longestWord = words[0];
   for (let i = 0; i < words.length; i += 1) {
-    // console.log(words[i]);
     if (words[i].length > longestWord.length) {
       longestWord = words[i];
     }
@@ -79,11 +78,8 @@ console.log(
 
 const checkForSpam = message => {
   let spam = message.toLowerCase();
-  console.log(spam);
-  if (spam.includes('sale') || spam.includes('spam')) {
-    return true;
-  }
-  return false;
+  spam = spam.includes('sale') || spam.includes('spam');
+  return spam;
 };
 
 console.log(checkForSpam('Latest technology news')); // false
@@ -97,34 +93,30 @@ let input;
 const numbers = [];
 let total = 0;
 
-const sumaryFunction = () => {
-  do {
-    input = prompt(`Введите число`);
-    numbers.push(Number(input));
-  } while (input != null);
-  if (numbers != 0) {
-    for (let i = 0; i < numbers.length; i += 1) {
-      total += numbers[i];
-    }
-    return total;
+do {
+  input = prompt('Введите число');
+  if (input === null) {
+    break;
+  } else if (isNaN(input)) {
+    alert('Было введено не число, попробуйте еще раз');
+  } else {
+    numbers.push(input);
   }
-  return (total = 'Pustoi massiv');
-};
+} while (input);
 
-console.log(sumaryFunction());
+for (let number of numbers) {
+  total += Number(number);
+}
+
+console.log(`Общая сумма чисел равна ${total}`);
 
 // TASK_7
 
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
-const isLoginValid = login => {
-  if (login.length >= 4 && login.length <= 16) {
-    return true;
-  }
-  return false;
-};
+const isLoginValid = login => login.length >= 4 && login.length <= 16;
 
-const isLoginUnique = (allLogins, login = 'Aj4x1sBozz') => {
+const isLoginUnique = (allLogins, login) => {
   return allLogins.includes(login);
 };
 
@@ -143,3 +135,4 @@ addLogin(logins, 'Ajax'); // 'Логин успешно добавлен!'
 addLogin(logins, 'robotGoogles'); // 'Такой логин уже используется!'
 addLogin(logins, 'Zod'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
 addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+console.log(logins);
