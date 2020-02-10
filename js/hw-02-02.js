@@ -1,4 +1,4 @@
-// TASK - 2;
+'use strict';
 
 const calculateEngravingPrice = (string, pricePerWord) => {
   const words = string.split(' ');
