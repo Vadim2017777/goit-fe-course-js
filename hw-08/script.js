@@ -1,7 +1,6 @@
 import galleryItems from './gallery-items.js';
 const gallery = document.querySelector('.js-gallery');
 const galleryOnClickImage = gallery.addEventListener('click', handleClickImage);
-gallery.addEventListener();
 
 insertGallery(galleryItems);
 function insertGallery(galleryItems) {
@@ -27,11 +26,15 @@ function insertGallery(galleryItems) {
 }
 
 function handleClickImage(e) {
-  //   const lightbox = document.querySelector('.js-lightbox');
-  e.target.src = e.target.dataset.source;
-  console.log(e.target.src);
+  const lightbox = document.querySelector('.js-lightbox');
+  const wideImage = document.querySelector('.lightbox__image');
+  wideImage.src = e.target.dataset.source;
+  console.log(wideImage);
+  lightbox.classList.add('is-open');
 
-  //   lightbox.classList.add('is-open');
+  console.log(wideImage);
+
+  console.log(e.target.src);
 }
 
 // e.target.dataset.source
