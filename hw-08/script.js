@@ -1,13 +1,15 @@
 import galleryItems from './gallery-items.js';
 
 const gallery = document.querySelector('.js-gallery');
-const galleryOnClickImage = gallery.addEventListener('click', handleClickImage);
+gallery.addEventListener('click', handleClickImage);
 const closeModalBtn = document.querySelector(`[data-action="close-lightbox"]`);
 const lightbox = document.querySelector('.js-lightbox');
 const wideImage = document.querySelector('.lightbox__image');
 closeModalBtn.addEventListener('click', handleCloseModal);
 const overlay = document.querySelector('.lightbox__content');
 overlay.addEventListener('click', handleCloseModal);
+const nextImgBtn = document.querySelector(`[data-action="next-image"]`);
+nextImgBtn.addEventListener('click', nextImage);
 
 insertGallery(galleryItems);
 function insertGallery(galleryItems) {
@@ -48,8 +50,6 @@ function handleCloseModal(e) {
   lightbox.classList.remove('is-open');
   wideImage.src = '';
   wideImage.alt = '';
-  console.log(e.target);
-  console.log(e.currentTarget);
 }
 
 function handleKeyPress(e) {
@@ -60,4 +60,10 @@ function handleKeyPress(e) {
   lightbox.classList.remove('is-open');
   wideImage.src = '';
   wideImage.alt = '';
+}
+
+function nextImage(e) {
+  console.log(e.target);
+  console.log(e.currentTarget);
+  const gallery = document.querySelector('.js-gallery');
 }
