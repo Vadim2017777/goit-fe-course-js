@@ -62,8 +62,38 @@ function handleKeyPress(e) {
   wideImage.alt = '';
 }
 
-function nextImage(e) {
-  console.log(e.target);
-  console.log(e.currentTarget);
-  const gallery = document.querySelector('.js-gallery');
+// function nextImage() {
+//   let currentImage;
+//   galleryItems.forEach((item, index) => {
+//     if (wideImage.src === item.original) {
+//       currentImage = index;
+//     }
+//     return currentImage;
+//   });
+
+//   wideImage.src = galleryItems[currentImage + 1].original;
+// }
+const currentImage = findImage(galleryItems);
+function nextImage() {
+  const currentImage = findImage(galleryItems);
+  console.log(galleryItems[currentImage]);
+
+  // wideImage.src = galleryItems[currentImage + 1].original;
+}
+
+function findImage(galleryItems) {
+  let currentImage;
+
+  galleryItems.forEach((item, index) => {
+    if (wideImage.src === item.original) {
+      currentImage = index;
+    }
+    return currentImage;
+  });
+
+  let nextImage = galleryItems[currentImage + 1].original;
+
+  console.log(currentImage);
+  console.log(nextImage);
+  return nextImage;
 }
