@@ -1,23 +1,30 @@
-import galleryItems from './gallery-items.js';
+import galleryItems from "./gallery-items.js";
 
-const gallery = document.querySelector('.js-gallery');
-gallery.addEventListener('click', handleClickImage);
+const gallery = document.querySelector(".js-gallery");
+gallery.addEventListener("click", handleClickImage);
+
 const closeModalBtn = document.querySelector(`[data-action="close-lightbox"]`);
-const lightbox = document.querySelector('.js-lightbox');
-const wideImage = document.querySelector('.lightbox__image');
-closeModalBtn.addEventListener('click', handleCloseModal);
-const overlay = document.querySelector('.lightbox__content');
-overlay.addEventListener('click', handleCloseModal);
+const lightbox = document.querySelector(".js-lightbox");
+closeModalBtn.addEventListener("click", handleCloseModal);
+
+const wideImage = document.querySelector(".lightbox__image");
+const overlay = document.querySelector(".lightbox__content");
+overlay.addEventListener("click", handleCloseModal);
+
 const nextImgBtn = document.querySelector(`[data-action="next-image"]`);
-nextImgBtn.addEventListener('click', nextImage);
+nextImgBtn.addEventListener("click", nextImage);
+
+const prevtImgBtn = document.querySelector(`[data-action="prev-image"]`);
+prevtImgBtn.addEventListener("click", prevImage);
 
 insertGallery(galleryItems);
+
 function insertGallery(galleryItems) {
   galleryItems.forEach(item => {
-    let li = document.createElement('li');
+    let li = document.createElement("li");
 
     li.insertAdjacentHTML(
-      'afterbegin',
+      "afterbegin",
       `<a
           class="gallery__link"
           href="${item.original}"
@@ -28,7 +35,7 @@ function insertGallery(galleryItems) {
             data-source="${item.original}"
             alt="${item.description}"
           />
-        </a>`,
+        </a>`
     );
     gallery.append(li);
   });
@@ -36,64 +43,52 @@ function insertGallery(galleryItems) {
 
 function handleClickImage(e) {
   e.preventDefault();
-  window.addEventListener('keydown', handleKeyPress);
+  window.addEventListener("keydown", handleKeyPress);
   wideImage.src = e.target.dataset.source;
   wideImage.alt = e.target.alt;
-  lightbox.classList.add('is-open');
+  lightbox.classList.add("is-open");
 }
 
 function handleCloseModal(e) {
   if (e.target != e.currentTarget) {
     return;
   }
-  window.removeEventListener('keydown', handleKeyPress);
-  lightbox.classList.remove('is-open');
-  wideImage.src = '';
-  wideImage.alt = '';
+  window.removeEventListener("keydown", handleKeyPress);
+  lightbox.classList.remove("is-open");
+  wideImage.src = "";
+  wideImage.alt = "";
 }
 
 function handleKeyPress(e) {
-  if (e.code != 'Escape') {
+  if (e.code != "Escape") {
     return;
   }
 
-  lightbox.classList.remove('is-open');
-  wideImage.src = '';
-  wideImage.alt = '';
+  lightbox.classList.remove("is-open");
+  wideImage.src = "";
+  wideImage.alt = "";
 }
 
-// function nextImage() {
-//   let currentImage;
-//   galleryItems.forEach((item, index) => {
-//     if (wideImage.src === item.original) {
-//       currentImage = index;
-//     }
-//     return currentImage;
-//   });
-
-//   wideImage.src = galleryItems[currentImage + 1].original;
-// }
-const currentImage = findImage(galleryItems);
 function nextImage() {
-  const currentImage = findImage(galleryItems);
-  console.log(galleryItems[currentImage]);
+  let currentImage = findImage(galleryItems);
 
-  // wideImage.src = galleryItems[currentImage + 1].original;
+  wideImage.src = galleryItems[currentImage + 1].original;
+  wideImage.alt = galleryItems[currentImage + 1].description;
 }
 
-function findImage(galleryItems) {
-  let currentImage;
+function prevImage() {
+  let currentImage = findImage(galleryItems);
 
-  galleryItems.forEach((item, index) => {
+  wideImage.src = galleryItems[currentImage - 1].original;
+  wideImage.alt = galleryItems[currentImage - 1].description;
+}
+
+function findImage(gallery) {
+  let ind;
+  gallery.forEach((item, index) => {
     if (wideImage.src === item.original) {
-      currentImage = index;
+      ind = index;
     }
-    return currentImage;
   });
-
-  let nextImage = galleryItems[currentImage + 1].original;
-
-  console.log(currentImage);
-  console.log(nextImage);
-  return nextImage;
+  return ind;
 }
