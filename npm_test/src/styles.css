@@ -1,3 +1,8 @@
 body {
-  background-color: aqua;
+  background-color: teal;
+}
+
+h1 {
+  color: brown;
+  position: sticky;
 }

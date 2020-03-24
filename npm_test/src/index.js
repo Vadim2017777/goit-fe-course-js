@@ -3,4 +3,5 @@ import './styles.css';
 const name = 'NPM Webpack';
 console.log(name);
 
-const arrow = () => console.log('Hello');
+const a = 5;
+console.log(a + 5);
