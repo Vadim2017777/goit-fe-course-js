@@ -1,6 +1,6 @@
-import "./styles.css";
+import './styles.css';
 
-const name = "NPM Webpack";
+const name = 'NPM Webpack';
 console.log(name);
 
 const a = 5;

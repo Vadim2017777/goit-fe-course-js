@@ -1,33 +1,33 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = env => ({
-  devtool: "source-map",
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      template: './index.html',
       minify: {
         collapseWhitespace: true,
         removeComments: true,
         removeRedundantAttributes: true,
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true
-      }
+        useShortDoctype: true,
+      },
     }),
     new MiniCssExtractPlugin({
-      filename: "styles.css"
+      filename: 'styles.css',
     }),
-    new OptimizeCssAssetsPlugin({})
-  ]
+    new OptimizeCssAssetsPlugin({}),
+  ],
 });
