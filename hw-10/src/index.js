@@ -8,8 +8,6 @@ const refs = {
   menuItem: document.querySelector('.js-menu'),
 };
 
-// refs.menuItem.insertAdjacentHTML('beforeend', buildMenuItem(items););
-buildMenuItem(items);
 function buildMenuItem(items) {
   const markup = items.map(item => itemMenuTemplate(item)).join('');
   refs.menuItem.insertAdjacentHTML('beforeend', markup);
@@ -43,5 +41,5 @@ function handleClick() {
   }
 }
 
-console.log(localStorage.getItem('Theme'));
 baseTheme();
+buildMenuItem(items);
