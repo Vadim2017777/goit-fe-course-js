@@ -20,7 +20,7 @@ prevtImgBtn.addEventListener("click", prevImage);
 insertGallery(galleryItems);
 
 function insertGallery(galleryItems) {
-  galleryItems.forEach(item => {
+  galleryItems.forEach((item) => {
     let li = document.createElement("li");
 
     li.insertAdjacentHTML(
@@ -32,6 +32,7 @@ function insertGallery(galleryItems) {
           <img
             class="gallery__image"
             src="${item.preview}"
+            data-lazy-srcset="${item.lazy}"
             data-source="${item.original}"
             alt="${item.description}"
           />
@@ -71,16 +72,22 @@ function handleKeyPress(e) {
 
 function nextImage() {
   let currentImage = findImage(galleryItems);
+  const last = galleryItems.length - 1;
 
-  wideImage.src = galleryItems[currentImage + 1].original;
-  wideImage.alt = galleryItems[currentImage + 1].description;
+  if (currentImage < last) {
+    wideImage.src = galleryItems[currentImage + 1].original;
+    wideImage.alt = galleryItems[currentImage + 1].description;
+  } else wideImage.src = galleryItems[0].original;
 }
 
 function prevImage() {
+  const last = galleryItems.length - 1;
   let currentImage = findImage(galleryItems);
 
-  wideImage.src = galleryItems[currentImage - 1].original;
-  wideImage.alt = galleryItems[currentImage - 1].description;
+  if (currentImage) {
+    wideImage.src = galleryItems[currentImage - 1].original;
+    wideImage.alt = galleryItems[currentImage - 1].description;
+  } else wideImage.src = galleryItems[last].original;
 }
 
 function findImage(gallery) {

@@ -20,7 +20,7 @@ prevtImgBtn.addEventListener("click", prevImage);
 insertGallery(galleryItems);
 
 function insertGallery(galleryItems) {
-  galleryItems.forEach(item => {
+  galleryItems.forEach((item) => {
     let li = document.createElement("li");
 
     li.insertAdjacentHTML(

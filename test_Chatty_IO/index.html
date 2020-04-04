@@ -8,44 +8,50 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <input
-      type="text"
-      id="validation-input"
-      data-length="6"
-      placeholder="Введи 6 символов"
-    />
-    <br />
+    <header class="header_input">
+      <input
+        type="text"
+        id="validation-input"
+        data-length="6"
+        placeholder="Введи 6 символов"
+      />
+    </header>
     <!-- В этот список добавляй элементы галереи -->
-    <ul class="gallery js-gallery"></ul>
+    <main>
+      <ul class="gallery js-gallery"></ul>
 
-    <!--
+      <!--
       Модальное окно для полноразмерного изображения
       Для того чтобы открыть, необходимо добавить на div.lightbox CSS-класс is-open
     -->
-    <div class="lightbox js-lightbox">
-      <div class="lightbox__overlay"></div>
+      <div class="lightbox js-lightbox">
+        <div class="lightbox__overlay"></div>
 
-      <div class="lightbox__content">
-        <img class="lightbox__image" src="" alt="" />
+        <div class="lightbox__content">
+          <img class="lightbox__image" src="" alt="" />
+        </div>
+        <button
+          type="button"
+          class="slider__control slider__control_right slider__control_show"
+          data-action="next-image"
+        ></button>
+        <button
+          type="button"
+          class="slider__control slider__control_left slider__control_show"
+          data-action="prev-image"
+        ></button>
+        <button
+          type="button"
+          class="lightbox__button"
+          data-action="close-lightbox"
+        ></button>
       </div>
-      <button
-        type="button"
-        class="slider__control slider__control_right slider__control_show"
-        data-action="next-image"
-      ></button>
-      <button
-        type="button"
-        class="slider__control slider__control_left slider__control_show"
-        data-action="prev-image"
-      ></button>
-      <button
-        type="button"
-        class="lightbox__button"
-        data-action="close-lightbox"
-      ></button>
-    </div>
-
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script> -->
     <script src="gallery-items.js" type="module"></script>
+    <script src="hw-06.js" type="module"></script>
     <script src="script.js" type="module"></script>
+    <script src="lazy-load.js"></script>
   </body>
 </html>
